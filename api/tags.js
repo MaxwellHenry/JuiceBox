@@ -5,7 +5,7 @@ const { getAllTags } = require('../db');
 tagsRouter.use((req, res, next) => {
     console.log("A request is being made to /tags");
   
-    next(); // THIS IS DIFFERENT
+    next();
 });
 
 tagsRouter.get('/', async (req, res) => {

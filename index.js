@@ -6,13 +6,14 @@
 /// Update   ---> PUT    ---> UPDATE
 /// Delete   ---> DELETE ---> DELETE
 
+require('dotenv').config();
+
 const PORT = 3000;
 const { response } = require('express');
 const express = require('express');
 const server = express();
 
-const apiRouter = require('./api');
-server.use('/api', apiRouter);
+
 
 const bodyParser = require('body-parser');
 server.use(bodyParser.json());
@@ -23,6 +24,8 @@ server.use(morgan('dev'));
 const { client } = require('./db');
 client.connect();
 
+const apiRouter = require('./api');
+server.use('/api', apiRouter);
 
 server.use((request, response, next) => {
     console.log("<____Body Logger START____>");
